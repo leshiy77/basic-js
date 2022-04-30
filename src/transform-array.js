@@ -18,34 +18,52 @@ function transform(arr) {
     throw new Error("'arr' parameter must be an instance of the Array!")
   }
   let newArr = [];
-  arr.forEach((elem, index, array) => {
-    if (elem in Object.keys(controls)) {
-      console.log(elem)
+  let discardNext =  false;
+  
+  /* for (let i = 0; i<arr.length; i++) {
+    if (arr[i] === '--discard-next' || arr[i] === '--double-prev'|| arr[i] === '--double-next' || arr[i] === '--discard-prev' ) {
+      switch(arr[i]) {
+        case '--discard-next':
+          if (i < arr.length -1) {
+            i +=1;
+            discardNext = true;
+            break
+          } else {
+            break
+          }
+        case '--double-prev':
+          if (discardNext) {
+            discardNext = false;
+            break
+          } else if (i = 0) {
+            break
+          } else {
+            newArr.push(arr[i-1]);
+          break
+          }
+        case '--double-next':
+          if (i < arr.length -1) {
+            newArr.push(arr[i+1]);
+            break
+          } else {
+            break
+          }
+        case '--discard-prev':
+          if (discardNext) {
+            discardNext = false;
+            break
+          } else if (i = 0) {
+            break
+          } else {
+            newArr.pop();
+            break
+          }
+      } 
     } else {
-      newArr.push(elem)
+      newArr.push(arr[i]);
     }
-  });
+  }*/
   return newArr;
-}
-function isIndex(index, array) {
-  if( index < 0 || index > array.length - 1){
-    return false;
-  }
-  return true;
-}
-const controls = {
-  "--discard-next": function(index, array) {
-      console.log(index);
-  },
-  "--discard-prev":  function(index, array) {
-    console.log(index);
-  },
-  "--double-next": function(index, array) {
-    console.log(index);
-  },
-  "--double-prev":  function(index, array) {
-    console.log(index);
-  },
 }
 
 module.exports = {
